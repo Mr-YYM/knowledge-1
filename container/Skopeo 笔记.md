@@ -27,6 +27,9 @@ docker login registry.svc.local --tls-verify=false
 
 常用法举例：
 ```shell
+# 将镜像从 k8s.gcr.io 拷贝到本机
+skopeo copy docker://k8s.gcr.io/metrics-server/metrics-server:v0.6.1 \
+  docker-daemon:k8s.gcr.io/metrics-server/metrics-server:v0.6.1
 # 将镜像从 quay.io 复制到内网 registry，不验证内网仓库的 tls 证书 
 skopeo copy --dest-tls-verify=false \
   docker://quay.io/buildah/stable docker://registry.svc.local/test/buildah
